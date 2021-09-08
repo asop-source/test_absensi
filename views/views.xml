@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+           <record id="data_action_absensi" model="ir.actions.act_window">
+            <field name="name">Absensi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">test_absensi.test_absensi</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new Absensi in your address book
+              </p><p>
+                Odoo helps you easily track all activities related to a Absensi.
+              </p>
+            </field>
+        </record>
+
+         <record id="view_absensi_tree" model="ir.ui.view">
+            <field name="name">view_absensi_tree</field>
+            <field name="model">test_absensi.test_absensi</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Absensi">
+                    <field name="number"/>
+                    <field name="name"/>
+                     <field name="date"/>
+                     <field name="in_date" widget="float_time"/>
+                     <field name="out_date" widget="float_time"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_absensi_form" model="ir.ui.view">
+            <field name="name">view_absensi_form</field>
+            <field name="model">test_absensi.test_absensi</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Absensi Form">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="number"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                 <field name="date"/>
+                                 <field name="in_date" widget="float_time"/>
+                                 <field name="out_date" widget="float_time"/>
+                             </group>
+                              <group>
+                                 <field name="name"/>
+                            </group>
+                        </group>
+                       
+
+                        <notebook>
+                            <page string="Description">
+                                <field name="line_ids" >
+                                 <tree editable="bottom" decoration-success="state == 'ontime'" decoration-danger="state == 'terlambat'">
+                                     <field name="time" widget="float_time"/>
+                                     <field name="partner_id"/>
+                                     <field name="state"/>
+                                 </tree>
+                             </field>
+                            </page>
+                        </notebook>
+                        </sheet>
+                </form>
+            </field>
+            </record>
+
+        <menuitem id="absensi_menu_root"
+            name="Absensi"
+            action="data_action_absensi"
+            sequence="1"/>
+  </data>
+</odoo>
